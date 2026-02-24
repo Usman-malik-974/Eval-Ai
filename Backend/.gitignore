@@ -1,5 +1,4 @@
 .env
+.gitignore
 node_modules
 index.js
-server.js
-.gitignore
