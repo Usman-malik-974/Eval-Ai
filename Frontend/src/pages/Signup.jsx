@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { signup } from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function Signup() {
     const res = await signup(form);
 
     if (res.status === 200) {
+      toast.success("Account created. Verify your email")
       navigate("/login");
     } else {
       setError(res.message || "Signup failed");
@@ -99,7 +101,7 @@ export default function Signup() {
           className="w-full mb-4 p-2 border rounded"
         />
 
-        <button className={`${signing?'bg-blue-300 cursor-not-allowed' :'bg-blue-500 cursor-pointer'} text-white w-full py-2 rounded`} disabled={signing}>
+        <button className={`${signing ? 'bg-blue-300 cursor-not-allowed' : 'bg-blue-500 cursor-pointer'} text-white w-full py-2 rounded`} disabled={signing}>
           Signup
         </button>
       </form>
